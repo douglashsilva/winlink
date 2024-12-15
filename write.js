@@ -145,8 +145,10 @@ class Writer {
         await this.writeClsid( common.clsids.MyComputer );
 
         /* TODO: if you want relative pathes, make drive and mycomputer optional */
-        var [ drive, path ] = this.path.split(":");
-        path = path.substring(1); // remove starting backslash
+
+        var drive = this.path.slice(0, 1)
+        var path = this.path.slice(2)
+        
         await this.writeDrive( drive + ":\\" );
 
         if( this.opts.directory )
